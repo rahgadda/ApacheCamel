@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.rahul.com</groupId>
-    <artifactId>rest-cosume-camel</artifactId>
+    <artifactId>jettyh-clock-camel</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
@@ -17,7 +17,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-servlet</artifactId>
+            <artifactId>camel-jetty</artifactId>
             <version>3.0.0-M4</version>
         </dependency>
         <dependency>

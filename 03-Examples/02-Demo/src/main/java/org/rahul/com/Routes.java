@@ -5,7 +5,7 @@ import org.apache.camel.builder.RouteBuilder;
 public class Routes extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        from("servlet://https:////apex.oracle.com//pls//apex//oraclejet//emp").transform().simple("{$in.body}")
-                .to("stream:out");
+        from("jetty://http://localhost:8889/clock").log("Received a request")
+                .setBody(simple("${date:now:yyyy-MM-dd'T'HH:mm:ssZ}"));
     }
 }
