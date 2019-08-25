@@ -101,7 +101,7 @@
     | In Message  | It is a mandatory message and is always set.                                                                                                                                                                                          |
     | Out Message | It is a optional message and is only used with InOutMEP.                                                                                                                                                                              |
 
-        ![](./01-Images/02-Exchange.png)
+    ![](./01-Images/02-Exchange.png)
 
 - Processor
 
