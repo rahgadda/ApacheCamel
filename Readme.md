@@ -64,93 +64,94 @@
     - Messages transport the data between the different parts of the mediation logic.
     - A message flows in one direction, from a sender to a receiver. It's not possible to use the same message to answer the sender, we will have to use another message.
     - A message is described in the `org.apache.camel.Message` interface.
-    - A message contains the following  
+    - A message contains the following
       | Identifier | Description |
-      |:-----------|:------------|
+      | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
       | ID | It is of a String type. Its is used to identify each message. |
-      |Header | Used to store any kind of data associated with a message. The data is stored in `CaseInsensitiveMap`. This can store any kinds of object and can use use a String key, which is case insensitive.|
-      | Attachment | Used to store attachments that are used by some protocols and components like e-mail component, WebService component. The attachments are stored in the message as `Map<String,DataHandler>`. An attachment name is a String, which is case sensitive. An attachment is stored using `DataHandler` providing support of MIME type and consistent access to the data.|
+      | Header | Used to store any kind of data associated with a message. The data is stored in `CaseInsensitiveMap`. This can store any kinds of object and can use use a String key, which is case insensitive. |
+      | Attachment | Used to store attachments that are used by some protocols and components like e-mail component, WebService component. The attachments are stored in the message as `Map<String,DataHandler>`. An attachment name is a String, which is case sensitive. An attachment is stored using `DataHandler` providing support of MIME type and consistent access to the data. |
       | Fault flag | This flag is used to indicate if the message is normal message or a faulted message. |
       | Body | The body is the actual payload of the message. The body is stored as an `Object` in the message, allowing you to store any kind of data. |
 
       ![](./01-Images/01-Message.png)
 
-  - Exchange
+- Exchange
 
-    - Camel doesn't transport a message directly. Camel wraps the messages into an **Exchange object** that acts as a messages container with all meta-data required for the routing logic.
-    - Camel uses Exchange object that encapsulates messages and Message Exchange Patterns (MEP). Camel supports the below MEP's. MEP are described in the `org.apache.camel.ExchangePattern` enumeration
-      - InOnly
-      - InOptionalOut
-      - InOut
-      - OutIn
-      - OutOptionalIn
-      - RobustInOnly
-      - RobustOutOnly
-    - A message can only flows in only one direction, in order to support the different MEPs, we need two messages. Both are wrapped using **Exchange object**
-      - The first message is mandatory as it's the in message.
-      - The second message is optional (depending on the MEP) as it's the out message
-    - An **Exchange object** contains the following. The `org.apache.camel.Exchange` interface describes an exchange.
-      | Identifier | Description |
-      |:-----------|:------------|
-      | Exchange ID | This is a unique identifier for the exchange. This is a String datatype. |
-      | MEP| Message Exchange Pattern |
-      | Exception | It stores the current cause of an exchange failure. |
-      | Properties | The properties is a `Map<String, Object>` and may look like message headers. The main difference is their lifetime: the properties exist during the whole exchange execution, whereas the headers are limited to the message duration |
-      | In Message | It is a mandatory message and is always set. |
-      | Out Message | It is a optional message and is only used with InOutMEP. |
+  - Camel doesn't transport a message directly. Camel wraps the messages into an **Exchange object** that acts as a messages container with all meta-data required for the routing logic.
+  - Camel uses Exchange object that encapsulates messages and Message Exchange Patterns (MEP). Camel supports the below MEP's. MEP are described in the `org.apache.camel.ExchangePattern` enumeration
+    - InOnly
+    - InOptionalOut
+    - InOut
+    - OutIn
+    - OutOptionalIn
+    - RobustInOnly
+    - RobustOutOnly
+  - A message can only flows in only one direction, in order to support the different MEPs, we need two messages. Both are wrapped using **Exchange object**
+    - The first message is mandatory as it's the in message.
+    - The second message is optional (depending on the MEP) as it's the out message
+  - An **Exchange object** contains the following. The `org.apache.camel.Exchange` interface describes an exchange.
 
-      ![](./01-Images/02-Exchange.png)
+    | Identifier  | Description                                                                                                                                                                                                                           |
+    | :---------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | Exchange ID | This is a unique identifier for the exchange. This is a String datatype.                                                                                                                                                              |
+    | MEP         | Message Exchange Pattern                                                                                                                                                                                                              |
+    | Exception   | It stores the current cause of an exchange failure.                                                                                                                                                                                   |
+    | Properties  | The properties is a `Map<String, Object>` and may look like message headers. The main difference is their lifetime: the properties exist during the whole exchange execution, whereas the headers are limited to the message duration |
+    | In Message  | It is a mandatory message and is always set.                                                                                                                                                                                          |
+    | Out Message | It is a optional message and is only used with InOutMEP.                                                                                                                                                                              |
 
-  - Processor
+        ![](./01-Images/02-Exchange.png)
 
-    - A processor is a node in the routing which is able to use, create, or modify an incoming exchange.
-    - Enterprise Integration Patterns (EIP) are implemented using processors in Camel.
-    - A processor is described using the `org.apache.camel.Processor` interface.
+- Processor
 
-  - Routes
+  - A processor is a node in the routing which is able to use, create, or modify an incoming exchange.
+  - Enterprise Integration Patterns (EIP) are implemented using processors in Camel.
+  - A processor is described using the `org.apache.camel.Processor` interface.
 
-    - It's a graph of processors or routing definition between the processors.
-    - The routing definition are loaded in the Camel context.
-    - The execution and flow of the exchange in a route is performed by the **routing engine**.
-    - Each route has a unique identifier that you can specify. This identifier is used to easily find the route, especially when you want to log, debug, monitor, or manage a route.
-    - A route has a life cycle similar to the Camel context with the same states: started, stopped, and suspended. This life cycle is managed by Camel context.
+- Routes
 
-  - Channel
+  - It's a graph of processors or routing definition between the processors.
+  - The routing definition are loaded in the Camel context.
+  - The execution and flow of the exchange in a route is performed by the **routing engine**.
+  - Each route has a unique identifier that you can specify. This identifier is used to easily find the route, especially when you want to log, debug, monitor, or manage a route.
+  - A route has a life cycle similar to the Camel context with the same states: started, stopped, and suspended. This life cycle is managed by Camel context.
 
-    - It sits between each processor in the route graph. It's responsible for the routing of an Exchange to the next Processor in the graph.
-    - The channel acts as a controller that monitors and controls the routing at runtime.
-    - The channel is described by the `org.apache.camel.Channel` interface.
-    - Channel allows Camel to enrich the route with interceptors. For instance, the Camel tracer or the error handling are functionalities implemented using an interceptor on the channel. There are three types of interceptors
-      - **Global interceptors**: This intercepts all exchanges on the channels.
-      - **Interceptors on the incoming exchanges**: This has limited the scope of the interceptor only on the first channel i.e. the one just after the first endpoint.
-      - **Interceptors on the exchanges going to one specific endpoint**: This limits the interceptor to the channel just before a given endpoint.
+- Channel
 
-  - Domain Specific Languages
+  - It sits between each processor in the route graph. It's responsible for the routing of an Exchange to the next Processor in the graph.
+  - The channel acts as a controller that monitors and controls the routing at runtime.
+  - The channel is described by the `org.apache.camel.Channel` interface.
+  - Channel allows Camel to enrich the route with interceptors. For instance, the Camel tracer or the error handling are functionalities implemented using an interceptor on the channel. There are three types of interceptors
+    - **Global interceptors**: This intercepts all exchanges on the channels.
+    - **Interceptors on the incoming exchanges**: This has limited the scope of the interceptor only on the first channel i.e. the one just after the first endpoint.
+    - **Interceptors on the exchanges going to one specific endpoint**: This limits the interceptor to the channel just before a given endpoint.
 
-    - Domain Specific Languages(DSL) is used to wire processors and endpoints together to define and form routes.
-    - Camel will load and interpret the DSL to create and instantiate all the objects.
-    - DSL is language agnostic and supports different programing languages like Java, Spring XML, REST, Groovy and Scala.
+- Domain Specific Languages
 
-  - Components:
+  - Domain Specific Languages(DSL) is used to wire processors and endpoints together to define and form routes.
+  - Camel will load and interpret the DSL to create and instantiate all the objects.
+  - DSL is language agnostic and supports different programing languages like Java, Spring XML, REST, Groovy and Scala.
 
-    - Components are used to define endpoints. These are the main extension points in Camel.
-    - Camel provides about 100 components and allows us to create our own components.
-    - The endpoints are described using a URI. At runtime, Camel looks for the URI and check component defined in prefix is loaded into Camel context and use this component to actually create the endpoint.
+- Components:
 
-  - Registry:
+  - Components are used to define endpoints. These are the main extension points in Camel.
+  - Camel provides about 100 components and allows us to create our own components.
+  - The endpoints are described using a URI. At runtime, Camel looks for the URI and check component defined in prefix is loaded into Camel context and use this component to actually create the endpoint.
 
-    - Camel will use registry to look for the beans used in the routing.
-    - Camel supports a pluggable Registry plugin strategy. This allows Camel to easily work with some kind of registry.
-    - The following registry implementations are shipped with Camel
-      - **SimpleRegistry**: It's basically a simple Map. It is mostly used for testing where only a limited number of JDK classes are available.
-      - **JndiRegistry**: It's the default registry used by Camel when using the Camel Java DSL. It is an implementation that uses an existing Java Naming and Directory (JNDI) registry to look up beans.
-      - **ApplicationContextRegistry**: It is a Spring-based implementation to look up beans from the Spring ApplicationContext.
-      - **OsgiServiceRegistry**: It is a OSGi based implementation to look up beans from the OSGi Service Registry.
-      - **CompositeRegistry**: Used to create multilayer registry.
+- Registry:
 
-  - Formatting
+  - Camel will use registry to look for the beans used in the routing.
+  - Camel supports a pluggable Registry plugin strategy. This allows Camel to easily work with some kind of registry.
+  - The following registry implementations are shipped with Camel
+    - **SimpleRegistry**: It's basically a simple Map. It is mostly used for testing where only a limited number of JDK classes are available.
+    - **JndiRegistry**: It's the default registry used by Camel when using the Camel Java DSL. It is an implementation that uses an existing Java Naming and Directory (JNDI) registry to look up beans.
+    - **ApplicationContextRegistry**: It is a Spring-based implementation to look up beans from the Spring ApplicationContext.
+    - **OsgiServiceRegistry**: It is a OSGi based implementation to look up beans from the OSGi Service Registry.
+    - **CompositeRegistry**: Used to create multilayer registry.
 
-    - Camel supports a pluggable data format allowing you to marshall and unmarshall the messages.
+- Formatting
+
+  - Camel supports a pluggable data format allowing you to marshall and unmarshall the messages.
 
 ---
 
