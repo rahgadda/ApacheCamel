@@ -8,6 +8,8 @@ public class App {
         System.out.println("Starting Apache Camel Demo!");
         CamelContext camel = new DefaultCamelContext();
         camel.addRoutes(new Routes());
+        camel.start();
+        Thread.sleep(5000);
         System.out.println("Ending Apache Camel Demo!");
     }
 }
