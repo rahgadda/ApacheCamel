@@ -64,7 +64,7 @@
     - Messages transport the data between the different parts of the mediation logic.
     - A message flows in one direction, from a sender to a receiver. It's not possible to use the same message to answer the sender, we will have to use another message.
     - A message is described in the `org.apache.camel.Message` interface.
-    - A message contains the following
+    - A message contains the following  
       | Identifier | Description |
       |:-----------|:------------|
       | ID | It is of a String type. Its is used to identify each message. |
