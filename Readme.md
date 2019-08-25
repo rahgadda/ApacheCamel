@@ -65,13 +65,14 @@
     - A message flows in one direction, from a sender to a receiver. It's not possible to use the same message to answer the sender, we will have to use another message.
     - A message is described in the `org.apache.camel.Message` interface.
     - A message contains the following
-      | Identifier | Description |
+
+      | Identifier | Description                                                                                                                                                                                                                                                                                                                                                          |
       | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-      | ID | It is of a String type. Its is used to identify each message. |
-      | Header | Used to store any kind of data associated with a message. The data is stored in `CaseInsensitiveMap`. This can store any kinds of object and can use use a String key, which is case insensitive. |
+      | ID         | It is of a String type. Its is used to identify each message.                                                                                                                                                                                                                                                                                                        |
+      | Header     | Used to store any kind of data associated with a message. The data is stored in `CaseInsensitiveMap`. This can store any kinds of object and can use use a String key, which is case insensitive.                                                                                                                                                                    |
       | Attachment | Used to store attachments that are used by some protocols and components like e-mail component, WebService component. The attachments are stored in the message as `Map<String,DataHandler>`. An attachment name is a String, which is case sensitive. An attachment is stored using `DataHandler` providing support of MIME type and consistent access to the data. |
-      | Fault flag | This flag is used to indicate if the message is normal message or a faulted message. |
-      | Body | The body is the actual payload of the message. The body is stored as an `Object` in the message, allowing you to store any kind of data. |
+      | Fault flag | This flag is used to indicate if the message is normal message or a faulted message.                                                                                                                                                                                                                                                                                 |
+      | Body       | The body is the actual payload of the message. The body is stored as an `Object` in the message, allowing you to store any kind of data.                                                                                                                                                                                                                             |
 
       ![](./01-Images/01-Message.png)
 
