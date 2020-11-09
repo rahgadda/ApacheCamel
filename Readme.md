@@ -150,3 +150,4 @@
 ## Appendix
    - [Redhat Getting started with Apache Camel](https://www.youtube.com/watch?v=jgh6uNcQSiQ)
    - [Redhat Overview of Apache Camel](https://www.youtube.com/watch?v=_xJipu2E0Pc)
+   - [Fuse Tooling Twitter](https://twitter.com/fusetooling?lang=en)
