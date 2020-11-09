@@ -1,14 +1,12 @@
 # Apache Camel
 
 ## Table of Content
-
 - [Overview](#Overview)
 - [History](#History)
 - [Modules](#Modules)
 - [Appendix](#Appendix)
 
 ## Overview
-
 - In an enterprise, we see a lot of different software and systems in the IT ecosystem. To provide a complete business solution, software systems has to exchange data.
 - This communication or integration is not so easy, as we have to deal with the specifications on each system like protocols, message data format etc.. These are different in most of the time, so we have to transform and adapt to each system.
 - To solve this problem, there are two options to do these integrations
@@ -30,24 +28,25 @@
     - It supports xpath, mvel, ognl, python, ruby, PHP, JavaScript, SpEL (Spring Expression Language), Groovy, and so on as expression languages.
   - **Predicates**:
     - These return true or false only.
-- Camel supports different data formats, in a pluggable way by marshall or unmarshall a message in a given format. Camel looks for a type converter, allowing to implicitly transform a message from one format to another. We can also explicitly define the type converter of requirement choice at some points during the processing of the message.
+- Camel supports different data formats, in a pluggable way by marshall or unmarshall a message in a given format. 
+- Camel looks for a type converter, allowing to implicitly transform a message from one format to another. 
+- We can also explicitly define the type converter of requirement choice at some points during the processing of the message.
 
 ---
 
 ## History
+- It was created by **James Strachan**. He is a software engineer who created the **Apache Groovy** programming language in 2003.
+- Camel stands for **Concise**, **Application**, **Message**, **Exchange**, **Language**.
+- Camel v1.0 was released on June 2007. 
 
 ---
 
 ## Modules
-
 - Below are the core components of Apache Camel
-
   - Below is the Architecture overview of Apache Camel. Individual details are provided below.
-
     ![](./01-Images/05-Arch.png)
 
   - Camel context
-
     - The Camel context is the runtime system that loads containers of all resources required for the execution of the routing.
     - When the context starts, it also starts various components and endpoints, and activates the routing rules.
     - The Camel context is described by the `org.apache.camel.CamelContext` interface
@@ -60,7 +59,6 @@
         ![](./01-Images/04-ContextLifeCycle.png)
 
   - Message
-
     - Messages transport the data between the different parts of the mediation logic.
     - A message flows in one direction, from a sender to a receiver. It's not possible to use the same message to answer the sender, we will have to use another message.
     - A message is described in the `org.apache.camel.Message` interface.
@@ -104,13 +102,11 @@
     ![](./01-Images/02-Exchange.png)
 
 - Processor
-
   - A processor is a node in the routing which is able to use, create, or modify an incoming exchange.
   - Enterprise Integration Patterns (EIP) are implemented using processors in Camel.
   - A processor is described using the `org.apache.camel.Processor` interface.
 
 - Routes
-
   - It's a graph of processors or routing definition between the processors.
   - The routing definition are loaded in the Camel context.
   - The execution and flow of the exchange in a route is performed by the **routing engine**.
@@ -118,7 +114,6 @@
   - A route has a life cycle similar to the Camel context with the same states: started, stopped, and suspended. This life cycle is managed by Camel context.
 
 - Channel
-
   - It sits between each processor in the route graph. It's responsible for the routing of an Exchange to the next Processor in the graph.
   - The channel acts as a controller that monitors and controls the routing at runtime.
   - The channel is described by the `org.apache.camel.Channel` interface.
@@ -128,19 +123,16 @@
     - **Interceptors on the exchanges going to one specific endpoint**: This limits the interceptor to the channel just before a given endpoint.
 
 - Domain Specific Languages
-
   - Domain Specific Languages(DSL) is used to wire processors and endpoints together to define and form routes.
   - Camel will load and interpret the DSL to create and instantiate all the objects.
   - DSL is language agnostic and supports different programing languages like Java, Spring XML, REST, Groovy and Scala.
 
 - Components:
-
   - Components are used to define endpoints. These are the main extension points in Camel.
   - Camel provides about 100 components and allows us to create our own components.
   - The endpoints are described using a URI. At runtime, Camel looks for the URI and check component defined in prefix is loaded into Camel context and use this component to actually create the endpoint.
 
 - Registry:
-
   - Camel will use registry to look for the beans used in the routing.
   - Camel supports a pluggable Registry plugin strategy. This allows Camel to easily work with some kind of registry.
   - The following registry implementations are shipped with Camel
@@ -151,9 +143,10 @@
     - **CompositeRegistry**: Used to create multilayer registry.
 
 - Formatting
-
   - Camel supports a pluggable data format allowing you to marshall and unmarshall the messages.
 
 ---
 
 ## Appendix
+   - [Redhat Getting started with Apache Camel](https://www.youtube.com/watch?v=jgh6uNcQSiQ)
+   - [Redhat Overview of Apache Camel](https://www.youtube.com/watch?v=_xJipu2E0Pc)
