@@ -1,0 +1,13 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://camel.apache.org/schema/spring"
+        xsi:schemaLocation="
+            http://camel.apache.org/schema/spring
+            http://camel.apache.org/schema/spring/camel-spring.xsd">
+    
+    <route id="xml-atlasmap">
+        <from uri="timer:simple?repeatCount=1"/>
+        <to uri="language:constant:resource:classpath:/data/individual.xml"/>
+        <to uri="atlasmap:map/simple-mapping.adm"/>
+        <log message="result is:\n ${body}"/>
+    </route>
+</routes>
