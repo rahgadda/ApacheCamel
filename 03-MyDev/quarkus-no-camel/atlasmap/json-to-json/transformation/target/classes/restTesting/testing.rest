@@ -1,0 +1,34 @@
+### 1.0 Simple
+POST http://localhost:8080/hello
+Content-Type: application/json
+
+{
+	"name": {
+		"firstName": "Rahul",
+		"lastName": "Gaddam"
+	},
+	"address": {
+		"streetAddress": "21 2nd Street",
+		"city": "New York"
+	},
+	"otherInformation": {
+		"gender": "M",
+		"dateOfBirth": "19-11-1970"
+	}
+}
+
+### 2.0 Comment
+POST http://localhost:8080/hello
+Content-Type: application/json
+
+{
+  "AccountNumber": "12344",
+  "Comment": "Rahul"
+}
+
+
+### List all mapping
+http://localhost:8585/v2/atlas/mappings/
+
+### Transforming
+http://localhost:8585/v2/atlas/v2/atlas/mapping/UI.159206

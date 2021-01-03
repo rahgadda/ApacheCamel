@@ -1,0 +1,16 @@
+{
+  "AccountCommentsRequest": {
+    "UserCode": "USR123",
+    "AccountComments": [
+      {
+        "AccountNumber": "20000100061065",
+        "Comments": {
+          "Alert": "Y",
+          "Type": "REG",
+          "SubType": "LOS",
+          "Comment": "Comment from the user"
+        }
+      }
+    ]
+  }
+}
