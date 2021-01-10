@@ -1,5 +1,5 @@
 ### 1.0 Simple
-POST http://localhost:8080/hello
+POST https://8080-f71a9f8e-f529-4158-b7e1-39924520a672.ws-us03.gitpod.io/hello
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### 2.0 Comment
-POST http://localhost:8080/hello
+POST https://8080-f71a9f8e-f529-4158-b7e1-39924520a672.ws-us03.gitpod.io/hello
 Content-Type: application/json
 
 {

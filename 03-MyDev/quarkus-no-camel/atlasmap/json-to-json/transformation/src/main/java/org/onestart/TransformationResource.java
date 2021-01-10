@@ -24,7 +24,7 @@ public class TransformationResource {
         //String admLocation = "D:\\02-MyDev\\12-Camel\\02-MyDev\\10-Atlasmap-dev1\\transformation\\src\\main\\resources\\mapping\\simple-UI.0.json";
 
         //comment
-        String admLocation = "D:\\02-MyDev\\12-Camel\\02-MyDev\\10-Atlasmap-dev1\\transformation\\src\\main\\resources\\mapping\\comment-UI.0.json";
+        String admLocation = "/workspace/ApacheCamel/03-MyDev/quarkus-no-camel/atlasmap/json-to-json/transformation/src/main/resources/mapping/comment-UI.0.json";
 
         // Creating Atlasmap Session
         AtlasContextFactory factory = DefaultAtlasContextFactory.getInstance();
