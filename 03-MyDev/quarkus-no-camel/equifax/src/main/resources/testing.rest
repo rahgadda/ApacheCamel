@@ -1,0 +1,8 @@
+### Swagger
+GET http://localhost:8080/api/swagger.json
+
+### Message Details
+GET http://localhost:8080/api/messages
+
+### Create Message
+POST http://localhost:8080/api/messages
