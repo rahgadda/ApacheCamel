@@ -28,7 +28,7 @@ public class EquifaxClient extends RouteBuilder {
         from("timer:timerName?fixedRate=true&period=60000")
             .setHeader(Exchange.HTTP_METHOD, simple("POST"))
             .setHeader(Exchange.CONTENT_TYPE, constant("application/x-www-form-urlencoded"))
-            .setHeader("Authorization",constant("Basic QXg0S3ZibUxSeGVxOE9RdkNGSFZxcVVvNzhtMDdRbVQ6QW81eFNDWkE0dmJLR0lzZ=="))
+            .setHeader("Authorization",constant("Basic SSS=="))
             .setBody().simple("grant_type=client_credentials&scope=https://api.equifax.com/business/consumer-credit/v1")
             .doTry()
                 .to("https::https://api.sandbox.equifax.com/v2/oauth/token")
